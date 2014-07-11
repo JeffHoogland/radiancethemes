@@ -135,8 +135,9 @@ group { name: "elm/map/marker_bubble/default";
    images.image: "img/bub_base_b0.png" COMP;
    images.image: "img/bub_base_b1.png" COMP;
    images.image: "img/bub_base_b2.png" COMP;
-   images.image: "img/bub_over_bot.png" COMP;
-   images.image: "shine.png" COMP;
+   images.image: "img/bub_base_b0_SH.png" COMP;
+   images.image: "img/bub_base_b1_SH.png" COMP;
+   images.image: "img/bub_base_b2_SH.png" COMP;
    parts {
       part { name: "base0";
          description { state: "default" 0.0;
@@ -146,8 +147,10 @@ group { name: "elm/map/marker_bubble/default";
             fill.smooth: 0;
             rel2.relative: 0.0 1.0;
             rel2.to: "base1";
+            color_class: "border_frame";
          }
       }
+      PART_SHINE("base0", "base0", "img/bub_base_b0_SH.png", 12 0 8 13)
       part { name: "base1";
          description { state: "default" 0.0;
             image.normal: "img/bub_base_b1.png";
@@ -156,8 +159,10 @@ group { name: "elm/map/marker_bubble/default";
             fill.smooth: 0;
             max: 17 99999;
             min: 17 22;
+            color_class: "border_frame";
          }
       }
+      PART_SHINE("base1", "base1", "img/bub_base_b1_SH.png", 0 0 8 13)
       part { name: "base2";
          description { state: "default" 0.0;
             image.normal: "img/bub_base_b2.png";
@@ -166,44 +171,16 @@ group { name: "elm/map/marker_bubble/default";
             fill.smooth: 0;
             rel1.relative: 1.0 0.0;
             rel1.to: "base1";
+            color_class: "border_frame";
          }
       }
+      PART_SHINE("base2", "base2", "img/bub_base_b2_SH.png", 0 12 8 13)
       part { name: "elm.swallow.content"; type: SWALLOW;
          description { state: "default" 0.0;
             rel1.to: "base0";
             rel1.offset: 5 4;
             rel2.to: "base2";
             rel2.offset: -6 -12;
-         }
-      }
-      part { name: "over"; mouse_events:  0;
-         description { state: "default" 0.0;
-            rel1.to: "base0";
-            rel1.offset: 2 1;
-            rel2.to: "base2";
-            rel2.offset: -3 1;
-            rel2.relative: 1.0 0.4;
-            image.normal: "img/bub_over_bot.png";
-            fill.smooth: 0;
-         }
-      }
-      part { name: "shine_clip"; type: RECT;
-         description { state: "default" 0.0;
-            rel1.to: "over";
-            rel1.offset: 0 -10;
-            rel2.to: "over";
-         }
-      }
-      part { name: "shine"; mouse_events: 0;
-         clip_to: "shine_clip";
-         description { state: "default" 0.0;
-            image.normal: "shine.png";
-            rel1.offset: 0 -2;
-            rel1.to: "over";
-            rel2.relative: 1.0 0.0;
-            rel2.offset: -1 2;
-            rel2.to: "over";
-            FIXED_SIZE(69, 5)
          }
       }
    }
