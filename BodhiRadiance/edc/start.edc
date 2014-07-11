@@ -1,0 +1,36 @@
+group { name: "e/modules/start/main";
+parts {	
+	
+	part { name: "icon";
+         description { state: "default" 0.0;
+			aspect: (100/127) (100/127);
+			aspect_preference: BOTH;
+            image.normal: "img/logo_small.png";
+            max: 100 127;
+            map.on: 1;
+            map.smooth: 1;
+            map.rotation.center: "icon";
+         }
+         description { state: "spin" 0.0;
+            inherit: "default" 0.0;
+            map.rotation.z: 360;
+         }
+      }
+    }
+	programs {
+      program {
+         signal: "e,state,focused";
+         source: "e";
+         transition: LINEAR 1.0;
+         action: STATE_SET "spin" 0.0;
+         target: "icon";
+      }
+      program {
+         signal: "e,state,unfocused";
+         source: "e";
+         transition: LINEAR 0.0;
+         action: STATE_SET "default" 0.0;
+         target: "icon";
+      }
+   }
+}
