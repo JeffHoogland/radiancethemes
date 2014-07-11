@@ -2,6 +2,8 @@ group { name: "elm/bubble/top_left/default";
    alias: "elm/bubble/base/default";
    images.image: "img/bub_base_tl.png" COMP;
    images.image: "img/bub_base_tr.png" COMP;
+   images.image: "img/bub_base_tl_SH.png" COMP;
+   images.image: "img/bub_base_tr_SH.png" COMP;
    parts {
       part { name: "event"; type: RECT;
          description { state: "default" 0.0;
@@ -108,6 +110,20 @@ group { name: "elm/bubble/top_left/default";
             image.border: 24 8 12 9;
             image.middle: SOLID;
             fill.smooth: 0;
+            color_class: "border_frame";
+         }
+         description { state: "rtl" 0.0;
+            inherit: "default" 0.0;
+            image.normal: "img/bub_base_tr.png";
+            image.border: 8 24 12 9;
+         }
+      }
+      part { name: "base_SH"; mouse_events:  0;
+         description { state: "default" 0.0;
+            STAY_ON("base")
+            image.normal: "img/bub_base_tl_SH.png";
+            image.border: 24 8 12 9;
+            fill.smooth: 1;
          }
          description { state: "rtl" 0.0;
             inherit: "default" 0.0;
@@ -142,11 +158,13 @@ group { name: "elm/bubble/top_left/default";
          signal: "edje,state,rtl"; source: "edje";
          action: STATE_SET "rtl" 0.0;
          target: "base";
+         target: "base_SH";
       }
       program {
          signal: "edje,state,ltr"; source: "edje";
          action: STATE_SET "default" 0.0;
          target: "base";
+         target: "base_SH";
       }
    }
 }
@@ -154,6 +172,8 @@ group { name: "elm/bubble/top_left/default";
 group { name: "elm/bubble/top_right/default";
    images.image: "img/bub_base_tr.png" COMP;
    images.image: "img/bub_base_tl.png" COMP;
+   images.image: "img/bub_base_tr_SH.png" COMP;
+   images.image: "img/bub_base_tl_SH.png" COMP;
    parts {
       part { name: "event"; type: RECT;
          description { state: "default" 0.0;
@@ -257,10 +277,23 @@ group { name: "elm/bubble/top_right/default";
             image.border: 8 24 12 9;
             image.middle: SOLID;
             fill.smooth: 0;
+            color_class: "border_frame";
          }
          description { state: "rtl" 0.0;
             inherit: "default" 0.0;
             image.normal: "img/bub_base_tl.png";
+            image.border: 24 8 12 9;
+         }
+      }
+      part { name: "base_SH"; mouse_events:  0;
+         description { state: "default" 0.0;
+            STAY_ON("base")
+            image.normal: "img/bub_base_tr_SH.png";
+            image.border: 8 24 12 9;
+         }
+         description { state: "rtl" 0.0;
+            inherit: "default" 0.0;
+            image.normal: "img/bub_base_tl_SH.png";
             image.border: 24 8 12 9;
          }
       }
@@ -291,11 +324,13 @@ group { name: "elm/bubble/top_right/default";
          signal: "edje,state,rtl"; source: "edje";
          action: STATE_SET "rtl" 0.0;
          target: "base";
+         target: "base_SH";
       }
       program {
          signal: "edje,state,ltr"; source: "edje";
          action: STATE_SET "default" 0.0;
          target: "base";
+         target: "base_SH";
       }
    }
 }
@@ -303,6 +338,8 @@ group { name: "elm/bubble/top_right/default";
 group { name: "elm/bubble/bottom_left/default";
    images.image: "img/bub_base_bl.png" COMP;
    images.image: "img/bub_base_br.png" COMP;
+   images.image: "img/bub_base_bl_SH.png" COMP;
+   images.image: "img/bub_base_br_SH.png" COMP;
    parts {
       part { name: "event"; type: RECT;
          description { state: "default" 0.0;
@@ -401,7 +438,7 @@ group { name: "elm/bubble/bottom_left/default";
       }
       part { name: "base"; mouse_events:  0;
          description { state: "default" 0.0;
-            rel2 {
+			rel2 {
                to_y: "elm.swallow.icon";
                relative: 1.0 0.0;
             }
@@ -409,10 +446,23 @@ group { name: "elm/bubble/bottom_left/default";
             image.border: 24 8 8 13;
             image.middle: SOLID;
             fill.smooth: 0;
+            color_class: "border_frame";
          }
          description { state: "rtl" 0.0;
             inherit: "default" 0.0;
             image.normal: "img/bub_base_br.png";
+            image.border: 8 24 8 13;
+         }
+      }
+      part { name: "base_SH"; mouse_events:  0;
+         description { state: "default" 0.0;
+            STAY_ON("base")
+            image.normal: "img/bub_base_bl_SH.png";
+            image.border: 24 8 8 13;
+         }
+         description { state: "rtl" 0.0;
+            inherit: "default" 0.0;
+            image.normal: "img/bub_base_br_SH.png";
             image.border: 8 24 8 13;
          }
       }
@@ -443,11 +493,13 @@ group { name: "elm/bubble/bottom_left/default";
          signal: "edje,state,rtl"; source: "edje";
          action: STATE_SET "rtl" 0.0;
          target: "base";
+         target: "base_SH";
       }
       program {
          signal: "edje,state,ltr"; source: "edje";
          action: STATE_SET "default" 0.0;
          target: "base";
+         target: "base_SH";
       }
    }
 }
@@ -455,6 +507,8 @@ group { name: "elm/bubble/bottom_left/default";
 group { name: "elm/bubble/bottom_right/default";
    images.image: "img/bub_base_br.png" COMP;
    images.image: "img/bub_base_bl.png" COMP;
+   images.image: "img/bub_base_br_SH.png" COMP;
+   images.image: "img/bub_base_bl_SH.png" COMP;
 
    parts {
       part { name: "event"; type: RECT;
@@ -561,11 +615,23 @@ group { name: "elm/bubble/bottom_right/default";
             image.normal: "img/bub_base_br.png";
             image.border: 8 24 8 13;
             image.middle: SOLID;
-            fill.smooth: 0;
+            color_class: "border_frame";
          }
          description { state: "rtl" 0.0;
             inherit: "default" 0.0;
             image.normal: "img/bub_base_bl.png";
+            image.border: 24 8 8 13;
+         }
+      }
+      part { name: "base_SH"; mouse_events:  0;
+         description { state: "default" 0.0;
+            STAY_ON("base")
+            image.normal: "img/bub_base_br_SH.png";
+            image.border: 8 24 8 13;
+         }
+         description { state: "rtl" 0.0;
+            inherit: "default" 0.0;
+            image.normal: "img/bub_base_bl_SH.png";
             image.border: 24 8 8 13;
          }
       }
@@ -596,11 +662,13 @@ group { name: "elm/bubble/bottom_right/default";
          signal: "edje,state,rtl"; source: "edje";
          action: STATE_SET "rtl" 0.0;
          target: "base";
+         target: "base_SH";
       }
       program {
          signal: "edje,state,ltr"; source: "edje";
          action: STATE_SET "default" 0.0;
          target: "base";
+         target: "base_SH";
       }
    }
 }
