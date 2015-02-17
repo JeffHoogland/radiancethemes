@@ -198,7 +198,6 @@ image.normal: "img/button_foc3_SH.png";
       part { name: "sizer.content"; type: TEXT; mouse_events: 0;
          scale: 1;
          description { state: "default" 0.0;
-            fixed: 1 1;
             visible: 0;
             text { font: "Sans"; size: 12;
                min: 0 0;
