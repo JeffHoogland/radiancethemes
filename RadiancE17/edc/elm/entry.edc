@@ -7,6 +7,11 @@ group { name: "elm/scroller/entry/default";
             color_class: "none";
          }
       }
+      part { name: "clipper"; type: RECT; mouse_events: 0;
+         description { state: "default" 0.0;
+            STAY_ON("bg")
+         }
+      }
       part { name: "elm.swallow.content";
          description { state: "default" 0.0;
             rel1.to: "elm.swallow.icon";
@@ -21,7 +26,9 @@ group { name: "elm/scroller/entry/default";
          clip_to: "clipper";
          description { state: "default" 0.0;
             fixed: 1 1;
+            rel1.to: "clipper";
             rel1.offset: 1 1;
+            rel2.to: "clipper";
             rel2.offset: 1 -2;
             rel2.relative: 0.0 1.0;
             visible: 0;
@@ -38,8 +45,10 @@ group { name: "elm/scroller/entry/default";
          clip_to: "clipper";
          description { state: "default" 0.0;
             fixed: 1 1;
+            rel1.to: "clipper";
             rel1.offset: -2 1;
             rel1.relative: 1.0 0.0;
+            rel2.to: "clipper";
             rel2.offset: -2 -2;
             visible: 0;
             align: 0.0 0.0;
@@ -402,8 +411,27 @@ group { name: "elm/entry/base/default";
          tag:  "preedit" "+ underline=on underline_color=#f07746";
          tag:  "preedit_sel" "+ backing=on backing_color=#000000 color=#ffffff";
       }
+      
+      style { name: "entry_nowrap_style";
+         base: "font=""Sans"" font_size=12 color=#ffffff text_class=entry color_class=entry left_margin=2 right_margin=2";
+         tag:  "em" "+ font_style=Oblique";
+         tag:  "link" "+ color=#f07746 underline=on underline_color=#f07746";
+         tag:  "hilight" "+ font_weight=Bold";
+         tag:  "preedit" "+ underline=on underline_color=#f07746";
+         tag:  "preedit_sel" "+ backing=on backing_color=#000000 color=#ffffff";
+      }
+      
       style { name: "entry_disabled_style";
          base: "font=""Sans"" font_size=12 color=#ffffff wrap=word text_class=entry color_class=entry_text_disabled left_margin=2 right_margin=2";
+         tag:  "em" "+ font_style=Oblique";
+         tag:  "link" "+ color=#f0774688 underline=on underline_color=#f0774688";
+         tag:  "hilight" "+ font_weight=Bold";
+         tag:  "preedit" "+ underline=on underline_color=#f0774688";
+         tag:  "preedit_sel" "+ backing=on backing_color=#000 color=#888888";
+      }
+      
+      style { name: "entry_nowrap_disabled_style";
+         base: "font=""Sans"" font_size=12 color=#ffffff text_class=entry color_class=entry_disabled left_margin=2 right_margin=2";
          tag:  "em" "+ font_style=Oblique";
          tag:  "link" "+ color=#f0774688 underline=on underline_color=#f0774688";
          tag:  "hilight" "+ font_weight=Bold";
@@ -664,7 +692,7 @@ group { name: "elm/entry/base-nowrap/default";
       part { name: "elm.text";
          description { state: "default" 0.0;
             color_class: "entry_text";
-            text { style: "entry_style";
+            text { style: "entry_nowrap_style";
                min: 1 1;
                align: 0.0 0.0;
                ellipsis: -1;
@@ -673,7 +701,7 @@ group { name: "elm/entry/base-nowrap/default";
          description { state: "disabled" 0.0;
             inherit: "default" 0.0;
             color_class: "entry_text_disabled";
-            text { style: "entry_disabled_style";
+            text { style: "entry_nowrap_disabled_style";
                min: 0 1;
             }
          }
